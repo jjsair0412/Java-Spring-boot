@@ -1,7 +1,7 @@
 package hello.helloSpring.repository;
 
 import hello.helloSpring.domain.Member;
-import org.apache.commons.logging.Log;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
@@ -10,7 +10,6 @@ public class MemoryMemberRepository implements MemberRepository {
     private static long sequence = 0L;
 
     @Override
-
     public Member save(Member member) {
         member.setId(++sequence);
         store.put(member.getId(), member);
