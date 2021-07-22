@@ -15,13 +15,15 @@ import javax.sql.DataSource;
 @Configuration
 public class SpringConfig {
 
+    private final MemberRepository memberRepository;
     private DataSource dataSource;
     private EntityManager em;
 
     @Autowired
-    public SpringConfig(DataSource dataSource, EntityManager em){
+    public SpringConfig(DataSource dataSource, EntityManager em, MemberRepository memberRepository){
         this.dataSource = dataSource;
         this.em = em;
+        this.memberRepository = memberRepository;
     }
 
     //컨테이너에 bean객체 생성
@@ -45,6 +47,7 @@ public class SpringConfig {
         // 이런 방법이 개방-폐쇄 원칙(OCP, Open-Closed Principle)이다.
  //       return new JdbcMemberRepository(dataSource);
 //        return new JdbcMemberRepository(dataSource);
-        return new JpaMemberRepository(em);
-        }
+//        return new JpaMemberRepository(em);
+
+    }
 }
