@@ -1,5 +1,6 @@
 package hello.helloSpring;
 
+import hello.helloSpring.aop.TimeTraceAop;
 import hello.helloSpring.repository.JdbcMemberRepository;
 import hello.helloSpring.repository.JpaMemberRepository;
 import hello.helloSpring.repository.MemberRepository;
@@ -47,7 +48,13 @@ public class SpringConfig {
         // 이런 방법이 개방-폐쇄 원칙(OCP, Open-Closed Principle)이다.
  //       return new JdbcMemberRepository(dataSource);
 //        return new JdbcMemberRepository(dataSource);
-//        return new JpaMemberRepository(em);
+        return new JpaMemberRepository(em);
 
     }
+
+    @Bean
+    public TimeTraceAop TimeTraceAop(){
+        return new TimeTraceAop();
+    }
+
 }

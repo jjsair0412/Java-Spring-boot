@@ -2,8 +2,6 @@ package hello.helloSpring.service;
 
 import hello.helloSpring.domain.Member;
 import hello.helloSpring.repository.MemberRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -19,6 +17,7 @@ public class MemberService {
 
     // 회원 가입
     public long join(Member member){
+
         validateDuplicateMember(member); // 중복 회원 검증
         memberRepository.save(member); // 검증 완료되면 memberRepository에 받아온 member를 저장
         return member.getId(); // 저장 후 id값만 반환
